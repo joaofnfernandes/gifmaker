@@ -1,0 +1,4 @@
+#!/bin/sh
+set -euo pipefail
+
+convert -loop 0 -delay 100 01.png 02.png out.gif
