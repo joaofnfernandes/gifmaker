@@ -8,4 +8,5 @@ services:
     volumes:
       - type: bind
         source: ./images
-        target: /usr/src/app
+        target: /images
+    command: ["./*.png"]

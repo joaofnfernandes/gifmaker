@@ -1,11 +1,14 @@
 FROM alpine:latest
 
 RUN echo "@edge http://nl.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories
-RUN apk update && apk add -u imagemagick
+RUN apk update && apk add -u \
+    imagemagick \
+    ffmpeg
 
-COPY main /usr/local/bin
+COPY entrypoint.sh /usr/local/bin
 
-WORKDIR /usr/src/app
-VOLUME ["/usr/src/app"]
+WORKDIR /images
+VOLUME ["/images"]
 
-CMD [ "/bin/sh", "-c", "main"]
+
+ENTRYPOINT [ "entrypoint.sh" ]
