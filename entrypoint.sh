@@ -8,9 +8,9 @@ VIDEO_FILENAME=${OUT_DIR}/${FILENAME}.mp4
 
 # Createsa gif, given image files
 function create_gif {
-    local frame_delay=100
-
-    convert -loop 0 -delay ${frame_delay} $* ${GIF_FILENAME}
+    local frame_delay=5
+    # loop infinitely, strip color profiles, optimize frame and transparency
+    convert -loop 0 -delay ${frame_delay} -strip -coalesce -layers Optimize $* ${GIF_FILENAME}
 }
 
 function create_video {
